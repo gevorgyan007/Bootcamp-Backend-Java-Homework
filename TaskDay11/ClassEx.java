@@ -2,17 +2,25 @@ package com.company.TaskDay11;
 
 
 public class ClassEx {
-    public void Method(String str) {
-        System.out.println("Hi");
+
+    public static void ReversMethod(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > 0)
+                array[i] = -array[i];
+            else if (array[i] < 0)
+                array[i] = -array[i];
+        }
+    }
+
+    public static void PrintArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
     }
     public static void main(String[] args) {
-        MyClass my = new MyClass();
-        my.Method(null);
+        int[] arr = new int[]{1,-2,-3,4};
+        ReversMethod(arr);
+        PrintArray(arr);
 
-    }
-}
- class MyClass{
-    public void Method( String str) {
-        System.out.println(str);
     }
 }
