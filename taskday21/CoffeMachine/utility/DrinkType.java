@@ -1,4 +1,4 @@
-package com.company.taskday21.CoffeMachine;
+package com.company.taskday21.CoffeMachine.utility;
 
     public enum DrinkType {
         Tea,
