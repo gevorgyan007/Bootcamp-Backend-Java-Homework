@@ -18,6 +18,7 @@ public class CalcPowerNumberTask2 {
         System.out.println("Please Enter pow ");
         int pow = scanner.nextInt();
         double result = CalcPow(num, pow);
+        String s = "";
 
         System.out.println(num + "^" + pow + " = " + result);
     }

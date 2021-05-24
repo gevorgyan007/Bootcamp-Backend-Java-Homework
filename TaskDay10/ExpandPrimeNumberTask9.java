@@ -13,7 +13,6 @@ public class ExpandPrimeNumberTask9 {
                 flag = true;
               break;
         }
-
         if (flag)
             System.out.println("not prime");
         else
