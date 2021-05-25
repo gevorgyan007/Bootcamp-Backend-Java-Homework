@@ -36,7 +36,11 @@ public class CoffeeMachine {
 
     private void setSuger(Command cmd, Cup cup) {
         if (cmd.getSugarQount()>0){
+            Sugar sugar = new Sugar();
             Sugar[] sug = new Sugar[cmd.getSugarQount()];
+            for (int i = 0; i < sug.length; i++) {
+                sug[i] = sugar;
+            }
             cup.setSugars(sug);
         }
     }
