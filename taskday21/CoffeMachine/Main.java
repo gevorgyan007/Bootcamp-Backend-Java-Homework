@@ -12,12 +12,12 @@ public class Main {
         System.out.println("Please input DrinkType");
         Command command = new Command(scanner.next());
 
-        // String str = command.toString();
-        //System.out.println(str);
+        String str = command.toString();
+        System.out.println(str);
         CoffeeMachine coffeeMachine = new CoffeeMachine();
-        Cup cup =  coffeeMachine.makeProduct(command);
+        Cup cup = coffeeMachine.makeProduct(command);
 
-       System.out.println(cup.toString());
+        System.out.println(cup.toString());
     }
 
 }

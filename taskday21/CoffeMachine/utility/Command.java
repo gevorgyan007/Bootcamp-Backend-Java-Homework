@@ -35,38 +35,36 @@ public class Command {
     }
 
     public Command(String commandField) {
-        //if (checkVal(commandField)) {
+        if (checkVal(commandField)) {
             this.commandField = commandField;
             this.Split();
-       //}
+        } else {
+            throw new IllegalArgumentException("You enter invalid input");
+        }
     }
 
-  //private boolean checkVal(String str) {
-  //    boolean result = true;
-  //    if (str.length() != 3) {
-  //        result = false;
-  //    } else if (str.charAt(0) != 'T' || str.charAt(0) != 'C' || str.charAt(0) != 'S') {
-  //        result = false;
-  //    }else  if((str.charAt(1) != ':')){
-  //        result = false;
-  //    }
-  //    if (str.charAt(2) > '9' || str.charAt(2) < '0') {
-  //        result = false;
-  //    }
-  //    return result;
-  //}
+    private boolean checkVal(String str) {
+        if (str.length() == 3) {
+            if (str.charAt(0) == 'T' || str.charAt(0) == 'C' || str.charAt(0) == 'S' && str.charAt(1) == ':') {
+                if (str.charAt(2) <= '9' && str.charAt(2) >= '0') {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     private void Split() {
         String str = this.commandField;
         String[] split = str.split(":");
 
-        if(split[0].equalsIgnoreCase("T")){
-            drinkType = DrinkType.Tea ;
+        if (split[0].equalsIgnoreCase("T")) {
+            drinkType = DrinkType.Tea;
         }
-        if(split[0].equalsIgnoreCase("S")){
-            drinkType = DrinkType.Chocolate ;
-        }else if(split[0].equalsIgnoreCase("C")){
-            drinkType = DrinkType.Coffee ;
+        if (split[0].equalsIgnoreCase("S")) {
+            drinkType = DrinkType.Chocolate;
+        } else if (split[0].equalsIgnoreCase("C")) {
+            drinkType = DrinkType.Coffee;
         }
         sugarQount = Integer.parseInt(split[1]);
     }
