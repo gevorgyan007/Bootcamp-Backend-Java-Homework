@@ -9,8 +9,5 @@ public class Main {
         System.out.println("Please enter your Warrior! \n 1. Swordsmen \n 2. Archer \n 3. Swordsman");
         int input = new Scanner(System.in).nextInt();
         Game game = new Game(input);
-        System.out.println(game.toString());
-
     }
-
 }
