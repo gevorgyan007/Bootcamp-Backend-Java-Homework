@@ -1,19 +1,38 @@
 package com.company.GameOfSoldier;
 
-import com.company.GameOfSoldier.utility.RandomNum;
+import com.company.GameOfSoldier.models.Soliders.Archer;
+import com.company.GameOfSoldier.models.Soliders.Mage;
+import com.company.GameOfSoldier.models.Soliders.Swordsmen;
+import com.company.GameOfSoldier.models.Soliders.Warrior;
+import com.company.GameOfSoldier.models.Weapons.Arrow;
+import com.company.GameOfSoldier.models.Weapons.MageWeapon;
+import com.company.GameOfSoldier.models.Weapons.Sword;
+import com.company.GameOfSoldier.utility.*;
+
+import java.util.Random;
+
 
 public class Game {
+   // private Warrior warrior;
     private Warrior warrior;
-    private Warrior randWarrior;
+    private Warrior opponent;
+
     private int numberSolider;
+
+    //private Weapon weapon;
+    //private Weapon weaponOpp;
 
     @Override
     public String toString() {
         return "Game{" +
                 "warrior=" + warrior +
-                ", randWarrior=" + randWarrior +
-                ", numberSolider=" + numberSolider +
-                '}';
+                ", opponent=" + opponent +
+                ", numberSolider=" + numberSolider + '}';
+               // ", weapon=" + weapon +
+               // ", weapon skill =" + weapon.getDamage()+
+               // ", weaponOpp=" + weaponOpp +
+               // ", weaponOPP skill="+weaponOpp.getDamage()+
+               // '}';
     }
 
     public Game(int numberSolider) {
@@ -30,83 +49,106 @@ public class Game {
         this.warrior = warrior;
     }
 
-    //private void randomSolider() {
-    //     if (warrior.equals(new Swordsmen())) {
-//
-    //        int result = RandomNum.randNum(1,2);
-//
-    //         if (result == 1) {
-    //             randWarrior = new Archer();
-    //         } else if (result == 2) {
-    //             randWarrior = new Mage();
-    //         }
-    //     }else if (warrior.equals(new Archer())) {
-//
-    //         int result = RandomNum.randNum(1,2);
-//
-    //         if (result == 1) {
-    //             randWarrior = new Swordsmen();
-    //         } else if (result == 2) {
-    //             randWarrior = new Mage();
-    //         }
-    //     }if (warrior.equals(new Mage())) {
-//
-    //         int result = RandomNum.randNum(1,2);
-//
-    //         if (result == 1) {
-    //             randWarrior = new Archer();
-    //         } else if (result == 2) {
-    //             randWarrior = new Archer();
-    //         }
-    //     }
-    // }
-    public  void start() {
-        int num1 = RandomNum.randNum(1, 6);
-        int num2 = RandomNum.randNum(1, 6);
 
-            if (num1 > num2) {
-                while(){
-                warrior.attack(randWarrior);
-                randWarrior.attack(warrior);
+   public   void start() {
+    int num1 = RandomNum.randNum(1, 6);
+       System.out.println("Dice 1" + num1);
+    int num2 = RandomNum.randNum(1, 6);
+       System.out.println("Dice 2" + num2);
+       System.out.println(this.toString());
+       if (num1 > num2) {
+            System.out.println("Player started attack");
+            while (true) {
+             if (warrior.getHealth()<0){
+                 System.out.println(warrior.getName()+ warrior.getHealth());
+                 break;
+             }else if ( opponent.getHealth()<0){
+                 System.out.println(opponent.getName() + opponent.getHealth());
+                 break;}
+             else{
+                 warrior.attack(opponent);
+             }
+             if (warrior.getHealth()<0 ){
+                 System.out.println(warrior.getName()+ warrior.getHealth());
+                 break;
+             }else if (opponent.getHealth()<0){
+                 System.out.println(opponent.getName() + opponent.getHealth());
+                 break;
+             }
+             else{
+                 opponent.attack(warrior);
+             }
+
+         }
+        }else if (num1 < num2) {
+            System.out.println("Opponent started attack");
+            while (true) {
+                if (warrior.getHealth()<0){
+                    System.out.println(warrior.getName()+ warrior.getHealth());
+                    break;
+                }else  if ( opponent.getHealth()<0){
+                    System.out.println(opponent.getName() + opponent.getHealth());
+                    break;
+                } else{
+                    opponent.attack(warrior);
                 }
-            }else  if (num1 < num2) {
-                randWarrior.attack(warrior);
+                if (warrior.getHealth()<0 ){
+                    System.out.println(warrior.getName() + warrior.getHealth());
+                    break;
+                }else if (opponent.getHealth()<0){
+                    System.out.println(opponent.getName() + opponent.getHealth());
+                    break;
+                } else{
+                    warrior.attack(opponent);
+                }
+
             }
+        }else if(num1 == num2) {
+            start();
         }
-
-
-
+    }
 
     private void setSolider() {
         if (numberSolider == 1) {
-            warrior = new Swordsmen();
-
+            warrior = new Swordsmen(300,"Swordsmen");
+            warrior.setWeapon(new Sword((new Random().nextInt(30)+10)));
             int result = RandomNum.randNum(1, 2);
-
             if (result == 1) {
-                randWarrior = new Archer();
+                System.out.println("Your opponent Archer");
+                opponent = new Archer(400,"Archer");
+                opponent.setWeapon(new Arrow((new Random().nextInt(40)+10)));
             } else if (result == 2) {
-                randWarrior = new Mage();
+                System.out.println("Your opponent Mage");
+                opponent = new Mage(500,"Mage");
+                opponent.setWeapon(new MageWeapon((new Random().nextInt(40)+15)));
             }
-
         } else if (numberSolider == 2) {
-            warrior = new Archer();
+            warrior = new Archer(400,"Archer");
+            warrior.setWeapon(new Arrow((new Random().nextInt(40)+10)));
             int result = RandomNum.randNum(1, 2);
-
             if (result == 1) {
-                randWarrior = new Swordsmen();
+                System.out.println("Your opponent Swordsmen");
+                opponent = new Swordsmen(300,"Swordsmen");
+
+                opponent.setWeapon(new Sword((new Random().nextInt(30)+10)));
             } else if (result == 2) {
-                randWarrior = new Mage();
+                opponent = new Mage(500,"Mage");
+                opponent.setWeapon(new MageWeapon((new Random().nextInt(40)+15)));
+                System.out.println("Your opponent Mage");
             }
         }
         if (numberSolider == 3) {
-            warrior = new Mage();
+            warrior =  new Mage(500,"Mage");
+            warrior.setWeapon(new MageWeapon(new Random().nextInt(40)+15));
             int result = RandomNum.randNum(1, 2);
-
             if (result == 1) {
-                randWarrior = new Archer();
+                System.out.println("Your opponent Archer");
+                opponent = new Archer(400,"Archer");
+                opponent.setWeapon( new Arrow((new Random().nextInt(40)+10)));
             } else if (result == 2) {
-                randWarrior = new Archer();
+                System.out.println("Your opponent Archer");
+                opponent =new Swordsmen(300,"Swordsmen");
+                opponent.setWeapon(new Sword(new Random().nextInt(30)+10)); ;
             }
         }
     }
