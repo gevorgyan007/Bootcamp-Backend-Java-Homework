@@ -21,10 +21,10 @@ public class Sort {
     }
 
     public int[] sortAge() {
-        int len = this.students.length;
+        int len = students.length;
         int[] arr = new int[len];
         for (int i = 0; i < len; i++) {
-            arr[i] = this.students[i].age;
+            arr[i] = students[i].age;
         }
         for (int i = 0; i < len - 1; i++) {
             for (int j = 0; j < len - i - 1; j++) {
@@ -38,10 +38,10 @@ public class Sort {
         return arr;
     }
     public int[] sortWeight() {
-        int len = this.students.length;
+        int len = students.length;
         int[] arr = new int[len];
         for (int i = 0; i < len; i++) {
-            arr[i] = this.students[i].weight;
+            arr[i] = students[i].weight;
         }
         for (int i = 0; i < len - 1; i++) {
             for (int j = 0; j < len - i - 1; j++) {
@@ -55,10 +55,10 @@ public class Sort {
         return arr;
     }
     public String[] sortName(){
-        int len = this.students.length;
+        int len = students.length;
         String[] arr = new String[len];
         for (int i = 0; i < len; i++) {
-            arr[i] = this.students[i].name;
+            arr[i] = students[i].name;
         }
         for (int i = 0; i < len - 1; i++) {
             for (int j = 0; j < len - i - 1; j++) {

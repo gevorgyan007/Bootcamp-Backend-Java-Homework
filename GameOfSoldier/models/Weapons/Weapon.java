@@ -13,4 +13,5 @@ public abstract class Weapon {
     public void setDamage(int damage) {
         this.damage = damage;
     }
+    public void hitPower(){};
 }

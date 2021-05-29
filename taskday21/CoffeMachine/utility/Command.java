@@ -2,8 +2,8 @@ package com.company.taskday21.CoffeMachine.utility;
 
 public class Command {
     private int sugarQount;
-    private DrinkType drinkType;
     private String commandField;
+    private DrinkType drinkType;
 
     @Override
     public String toString() {
