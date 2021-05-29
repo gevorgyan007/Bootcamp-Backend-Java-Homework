@@ -11,12 +11,10 @@ import com.company.VendingMachine.utility.*;
 
 
 public class VendingMachine {
-    Stack<CocaCola> colaStack;
     Stack<Product>[] stacks = new Stack[4];
     public VendingMachine() {
 
     }
-
 
     public Product[] giveProduct(Command command){
         Product[] products = new Product[command.getCountProduct()];
@@ -26,7 +24,6 @@ public class VendingMachine {
         setsandwichProduct(command, products);
         return  products;
     }
-
 
     private void setsandwichProduct(Command command, Product[] products) {
         if (command.getProductType() == ProductType.SANDWICH) {
