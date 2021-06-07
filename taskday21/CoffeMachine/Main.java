@@ -16,7 +16,6 @@ public class Main {
         System.out.println(str);
         CoffeeMachine coffeeMachine = new CoffeeMachine();
         Cup cup = coffeeMachine.makeProduct(command);
-
         System.out.println(cup.toString());
     }
 

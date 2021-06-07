@@ -11,10 +11,20 @@ import com.company.VendingMachine.utility.*;
 
 
 public class VendingMachine {
-    Stack<Product>[] stacks = new Stack[4];
+    
+    Stack<Product>[] stacks = new Stack[16];
     public VendingMachine() {
 
     }
+
+  //private void InsertProduct(){
+  //    for (int i = 0; i < stacks.length; i++) {
+  //        for (int j = 0; j <20 ; j++) {
+  //
+  //        }
+  //    }
+  //}
+
 
     public Product[] giveProduct(Command command){
         Product[] products = new Product[command.getCountProduct()];

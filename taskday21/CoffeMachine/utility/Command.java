@@ -1,5 +1,7 @@
 package com.company.taskday21.CoffeMachine.utility;
 
+import java.util.Scanner;
+
 public class Command {
     private int sugarQount;
     private String commandField;
@@ -39,7 +41,16 @@ public class Command {
             this.commandField = commandField;
             this.Split();
         } else {
-            throw new IllegalArgumentException("You enter invalid input");
+            try {
+                throw  new InvalidInputException("Invalid Input format");
+            } catch (InvalidInputException e) {
+                System.out.println(e.getMessage());
+
+                // e.MyExceptionMethod();
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Please input DrinkType");
+                Command command = new Command(scanner.next());
+            }
         }
     }
 
@@ -68,6 +79,4 @@ public class Command {
         }
         sugarQount = Integer.parseInt(split[1]);
     }
-
-
 }

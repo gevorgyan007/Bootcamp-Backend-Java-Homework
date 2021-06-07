@@ -1,8 +1,6 @@
 package com.company.VendingMachine.utility;
 
 public class Stack<T> {
-
-
     class Node{
        private T date;
        private  Node next;
@@ -39,7 +37,7 @@ public class Stack<T> {
         count--;
         return result;
     }
-    //public T peek(){
-    //    return top.date;
-    //}
+    public T peek(){
+        return top.date;
+    }
 }
