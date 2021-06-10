@@ -1,4 +1,4 @@
-package com.company.MoveCinema.utility;
+package com.company.MoveCinema.controller.movie.model;
 import java.lang.*;
 public class MovieRequest {
 

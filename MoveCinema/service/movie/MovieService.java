@@ -1,12 +1,14 @@
-package com.company.MoveCinema.models;
+package com.company.MoveCinema.service.movie;
 
-import com.company.MoveCinema.Move.Director;
-import com.company.MoveCinema.Move.Move;
-import com.company.MoveCinema.utility.MovieRequest;
+import com.company.MoveCinema.service.director.model.Director;
+import com.company.MoveCinema.controller.movie.model.MovieRequest;
+import com.company.MoveCinema.persistance.DataBase;
+import com.company.MoveCinema.service.movie.model.Move;
 
 import java.util.Scanner;
 
-public class Service {
+public class MovieService {
+
     public static void create(MovieRequest movieRequest) {
         if (movieRequest.getTitle() == null) {
             throw new NullPointerException("Cant be null name of move");

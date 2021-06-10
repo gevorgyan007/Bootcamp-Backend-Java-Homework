@@ -1,6 +1,7 @@
-package com.company.MoveCinema.Move;
+package com.company.MoveCinema.service.movie.model;
 
 public class Move {
+
     private String title;
     private String directorFirstName;
     private String directorLastName;
@@ -8,7 +9,7 @@ public class Move {
     private String genre;
     private int year;
     private static int id;
-   // private Director directors;
+   // private Director director;
 
 
     public String getDirectorFirstName() {

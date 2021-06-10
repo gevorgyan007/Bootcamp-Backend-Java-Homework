@@ -2,9 +2,9 @@ package com.company.SimpleLinkedList;
 
 public class LinkedList<T> implements MyList<T> {
 
-    class Node {
+    public class Node<T> {
         T data;
-        Node next;
+        Node<T> next;
 
         public Node(T data) {
             this.data = data;
@@ -22,7 +22,7 @@ public class LinkedList<T> implements MyList<T> {
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
-        return current.data;
+        return (T)current.data;
     }
 
     private void checkIndex(int index) {
@@ -45,7 +45,6 @@ public class LinkedList<T> implements MyList<T> {
         }
         last.next = node;
         last = node;
-
         count++;
     }
 

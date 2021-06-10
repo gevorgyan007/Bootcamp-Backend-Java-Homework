@@ -1,12 +1,13 @@
-package com.company.MoveCinema.models;
+package com.company.MoveCinema.persistance;
 
-import com.company.MoveCinema.Move.Director;
-import com.company.MoveCinema.Move.Move;
+import com.company.MoveCinema.service.director.model.Director;
+import com.company.MoveCinema.service.movie.model.Move;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataBase {
+
     private static final List<Move> moves = new ArrayList<>();
     private static final List<Director> directors = new ArrayList<>();
 

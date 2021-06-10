@@ -11,8 +11,24 @@ class My {
         // list.add(555);
         //// list1.add(555);
         // System.out.println(list1);
+        //List<Integer> list = new ArrayList<>();
+        //list.add(4);
+        //list.add(5);
+        //list.add(7);
+        //list.add(8);
+        //list.add(4);
+        //list.add(1);
 
-
+       //Iterator<Integer> iterator = list.iterator();
+       //while (iterator.hasNext()){
+       //    int num = iterator.next();
+       //    if (num%2 != 0)iterator.remove();
+       //}
+       //for (int item : list){
+       //    if (item % 2 !=0)
+       //        list.remove(item);
+       //}
+       //System.out.println(list.toString());
 
     }
 }

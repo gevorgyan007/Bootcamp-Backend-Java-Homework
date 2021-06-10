@@ -1,7 +1,10 @@
-package com.company.MoveCinema.Move;
+package com.company.MoveCinema.service.director.model;
 
 public class Director {
+
+    //TODO AMOT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private String FirstNameOfDirector;
+    //TODO AMOT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private String LastNameOfDirector;
     private int yearOfDirector;
 
