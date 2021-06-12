@@ -8,8 +8,12 @@ public class Main {
         myHashMap.put(2,20);
         myHashMap.put(3,30);
         myHashMap.put(4,40);
-        for (int i = 0; i < myHashMap.getData().length; i++) {
-            System.out.println(myHashMap.getData());
-        }
+        myHashMap.put(5,40);
+        myHashMap.put(6,40);
+        myHashMap.put(7,40);
+
+        System.out.println(myHashMap);
+
+
     }
 }

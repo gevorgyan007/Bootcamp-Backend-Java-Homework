@@ -19,17 +19,19 @@ class My {
         //list.add(4);
         //list.add(1);
 
-       //Iterator<Integer> iterator = list.iterator();
-       //while (iterator.hasNext()){
-       //    int num = iterator.next();
-       //    if (num%2 != 0)iterator.remove();
-       //}
-       //for (int item : list){
-       //    if (item % 2 !=0)
-       //        list.remove(item);
-       //}
-       //System.out.println(list.toString());
-
+        //Iterator<Integer> iterator = list.iterator();
+        //while (iterator.hasNext()){
+        //    int num = iterator.next();
+        //    if (num%2 != 0)iterator.remove();
+        //}
+        //for (int item : list){
+        //    if (item % 2 !=0)
+        //        list.remove(item);
+        //}
+        //System.out.println(list.toString());
+        //Integer key =88;
+        //System.out.println(key.hashCode() % 16);
+        //System.out.println(key.hashCode() % 32);
     }
 }
 

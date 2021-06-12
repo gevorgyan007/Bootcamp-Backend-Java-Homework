@@ -12,6 +12,7 @@ public class Entry<K,V> {
     public K getKey() {
         return key;
     }
+    public final String toString() { return key + " = " + value; }
 
     public void setKey(K key) {
         this.key = key;
