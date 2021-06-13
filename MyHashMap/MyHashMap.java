@@ -73,7 +73,7 @@ public class MyHashMap<K, V> {
             if (data[i] != null) {
                 for (int j = 0; j < data[i].size(); j++) {
                     stringBuilder.append(data[i].get(j).toString());
-                    if ()
+                    //if ()
                     stringBuilder.append(", ");
                 }
             }
