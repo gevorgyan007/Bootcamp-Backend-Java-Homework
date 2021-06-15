@@ -1,5 +1,4 @@
 package com.company;
-
 class My {
 
     public static void main(String[] args) {
@@ -32,6 +31,7 @@ class My {
         //Integer key =88;
         //System.out.println(key.hashCode() % 16);
         //System.out.println(key.hashCode() % 32);
+
         for (int i = 0; i < args.length; i++) {
             System.out.println(i + " " + args[i]);
         }
