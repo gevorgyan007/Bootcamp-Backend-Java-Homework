@@ -9,7 +9,10 @@ import com.company.VendingMachineTwo.Products.Chocolate.Bounty;
 import com.company.VendingMachineTwo.Products.Chocolate.KitKat;
 import com.company.VendingMachineTwo.Products.Chocolate.Snickers;
 import com.company.VendingMachineTwo.Products.Chocolate.Twix;
-import com.company.VendingMachineTwo.Products.Drinks.*;
+import com.company.VendingMachineTwo.Products.Drinks.CocaCola;
+import com.company.VendingMachineTwo.Products.Drinks.Fanta;
+import com.company.VendingMachineTwo.Products.Drinks.Pepsi;
+import com.company.VendingMachineTwo.Products.Drinks.Sprite;
 import com.company.VendingMachineTwo.Products.Product;
 import com.company.VendingMachineTwo.Products.Sandwich.ChickenCheese;
 import com.company.VendingMachineTwo.Products.utility.Command;
@@ -17,146 +20,63 @@ import com.company.VendingMachineTwo.Products.utility.Command;
 import java.io.Serializable;
 import java.util.*;
 
-public class VendingMachine implements Serializable {
+public  class VendingMachine implements Serializable {
     private static final HashMap<String, List<Queue<Product>>> hashMap = new HashMap<>();
+   private static final List<Queue<Product>> listSandwich = new LinkedList<>();
+   private static final List<Queue<Product>> listChips = new LinkedList<>();
+   private static final List<Queue<Product>> listChocolate = new LinkedList<>();
+   private static final List<Queue<Product>> listDrinks = new LinkedList<>();
 
     public VendingMachine() {
+        setSandwichType();
+        setChipsType();
+        setDrinksType();
+        SetChocolateType();
         fillVendingMachine();
     }
 
-    public Product[] giveProduct(Command command) {
-        Object[] keysOfMap = hashMap.keySet().toArray();
+    public void giveProduct(Command command) {
 
         Product[] products = new Product[command.getCountProduct()];
-        getDrinks(command, keysOfMap, products);
-        getChipses(command, keysOfMap, products);
-        getChocolates(command, keysOfMap, products);
-        getSandwiches(command, keysOfMap, products);
-        return products;
-    }
 
-    private void getSandwiches(Command command, Object[] keysOfMap, Product[] products) {
-        if (command.getProductType().equals(keysOfMap[3])){
-            List<Queue<Product>> listSandwich = hashMap.get(keysOfMap[3]);
-            if (command.getColNumber() == 1){
-                Queue<Product> productChickenCheese =listSandwich.get(0);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productChickenCheese.poll();
-                }
-            }else if (command.getColNumber() == 2){
-                Queue<Product> productsCombination = listSandwich.get(1);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsCombination.poll();
-                }
-            }else if (command.getColNumber() == 3){
-                Queue<Product> productsHamSwiss= listSandwich.get(2);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsHamSwiss.poll();
-                }
-            }else if (command.getColNumber() == 4){
-                Queue<Product> productTunSalad= listSandwich.get(3);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productTunSalad.poll();
-                }
+        if (command.getProductType().equals("A")) {
+            Queue<Product> drinks = hashMap.get("A").get(command.getColNumber()-1);
+            for (int i = 0; i < products.length; i++) {
+                products[i] = drinks.poll();
             }
         }
-    }
-
-    private void getChocolates(Command command, Object[] keysOfMap, Product[] products) {
-        if (command.getProductType().equals(keysOfMap[2])){
-            List<Queue<Product>> listChocolate = hashMap.get(keysOfMap[2]);
-            if (command.getColNumber() == 1){
-                Queue<Product> productsBounty= listChocolate.get(0);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsBounty.poll();
-                }
-            }else if (command.getColNumber() == 2){
-                Queue<Product> productsKitKat = listChocolate.get(1);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsKitKat.poll();
-                }
-            }else if (command.getColNumber() == 3){
-                Queue<Product> productsSnickers= listChocolate.get(2);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsSnickers.poll();
-                }
-            }else if (command.getColNumber() == 4){
-                Queue<Product> productsTwix= listChocolate.get(3);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsTwix.poll();
-                }
+        if (command.getProductType().equals("B")) {
+            Queue<Product> chips = hashMap.get("B").get(command.getColNumber()-1);
+            for (int i = 0; i < products.length; i++) {
+                products[i] = chips.poll();
             }
         }
-    }
-
-    private void getChipses(Command command, Object[] keysOfMap, Product[] products) {
-        if (command.getProductType().equals(keysOfMap[1])){
-            List<Queue<Product>> listChips = hashMap.get(keysOfMap[1]);
-            if (command.getColNumber() == 1){
-                Queue<Product> productsDoritos = listChips.get(0);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsDoritos.poll();
-                }
-            }else if (command.getColNumber() == 2){
-                Queue<Product> productsLays = listChips.get(1);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsLays.poll();
-                }
-            }else if (command.getColNumber() == 3){
-                Queue<Product> productsPringles= listChips.get(2);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsPringles.poll();
-                }
-            }else if (command.getColNumber() == 4){
-                Queue<Product> productsRuffles= listChips.get(3);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productsRuffles.poll();
-                }
+        if (command.getProductType().equals("C")) {
+             Queue<Product> chocolate = hashMap.get("C").get(command.getColNumber()-1);
+            for (int i = 0; i < products.length; i++) {
+                products[i] = chocolate.poll();
             }
         }
-    }
-
-    private void getDrinks(Command command, Object[] keysOfMap, Product[] products) {
-        if (command.getProductType().equals(keysOfMap[0])) {
-            List<Queue<Product>> listDrink = hashMap.get(keysOfMap[0]);
-            if (command.getColNumber() == 1) {
-                Queue<Product> productsCoca = listDrink.get(0);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                   products[i] = productsCoca.poll();
-                }
-            }else if (command.getColNumber() == 2){
-                Queue<Product> productFanta = listDrink.get(1);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productFanta.poll();
-                }
-            }else if (command.getColNumber() == 3){
-                Queue<Product> productSprint= listDrink.get(2);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productSprint.poll();
-                }
-            }else if (command.getColNumber() == 4){
-                Queue<Product> productPepsi= listDrink.get(3);
-                for (int i = 0; i < command.getCountProduct(); i++) {
-                    products[i] = productPepsi.poll();
-                }
+        if (command.getProductType().equals("D")) {
+            Queue<Product> sandwich = hashMap.get("D").get(command.getColNumber()-1);
+            for (int i = 0; i < products.length; i++) {
+                products[i] = sandwich.poll();
             }
         }
+        System.out.println(Arrays.toString(products));
     }
 
 
     private void fillVendingMachine() {
-        List<Queue<Product>> listDrinks = setDrinksType();
-        List<Queue<Product>> listChips = setChipsType();
-        List<Queue<Product>> listChocolate = SetChocolateType();
-        List<Queue<Product>> listSandwich = setSandwichType();
         hashMap.put("A", listDrinks);
         hashMap.put("B", listChips);
         hashMap.put("C", listChocolate);
         hashMap.put("D", listSandwich);
     }
 
-    private List<Queue<Product>> setSandwichType() {
-        List<Queue<Product>> listSandwich = new LinkedList<>();
+    private void setSandwichType() {
+
+
         Queue<Product> chickenCheese = new LinkedList<>();
         Queue<Product> combination = new LinkedList<>();
         Queue<Product> hamSwiss = new LinkedList<>();
@@ -168,14 +88,13 @@ public class VendingMachine implements Serializable {
             tunSalad.add(new Ruffles("tunSalad"));
         }
         listSandwich.add(chickenCheese);
-        listSandwich.add(combination);
-        listSandwich.add(hamSwiss);
-        listSandwich.add(tunSalad);
-        return listSandwich;
+       listSandwich.add(combination);
+       listSandwich.add(hamSwiss);
+       listSandwich.add(tunSalad);
     }
 
-    private List<Queue<Product>> setChipsType() {
-        List<Queue<Product>> listChips = new LinkedList<>();
+    private void  setChipsType() {
+
         Queue<Product> doritos = new LinkedList<>();
         Queue<Product> lays = new LinkedList<>();
         Queue<Product> pringles = new LinkedList<>();
@@ -187,14 +106,14 @@ public class VendingMachine implements Serializable {
             ruffles.add(new Ruffles("Ruffles"));
         }
         listChips.add(doritos);
-        listChips.add(lays);
-        listChips.add(pringles);
-        listChips.add(ruffles);
-        return listChips;
+       listChips.add(lays);
+       listChips.add(pringles);
+       listChips.add(ruffles);
+
     }
 
-    private List<Queue<Product>> SetChocolateType() {
-        List<Queue<Product>> listChocolate = new LinkedList<>();
+    private void SetChocolateType() {
+
         Queue<Product> bounty = new LinkedList<>();
         Queue<Product> kitKat = new LinkedList<>();
         Queue<Product> snickers = new LinkedList<>();
@@ -206,14 +125,12 @@ public class VendingMachine implements Serializable {
             twix.add(new Twix("Twix"));
         }
         listChocolate.add(bounty);
-        listChocolate.add(kitKat);
-        listChocolate.add(snickers);
-        listChocolate.add(twix);
-        return listChocolate;
+       listChocolate.add(kitKat);
+       listChocolate.add(snickers);
+       listChocolate.add(twix);
     }
 
-    private List<Queue<Product>> setDrinksType() {
-        List<Queue<Product>> listDrinks = new LinkedList<>();
+    private void setDrinksType() {
         Queue<Product> coca = new LinkedList<>();
         Queue<Product> fanta = new LinkedList<>();
         Queue<Product> sprite = new LinkedList<>();
@@ -228,7 +145,6 @@ public class VendingMachine implements Serializable {
         listDrinks.add(fanta);
         listDrinks.add(sprite);
         listDrinks.add(pepsi);
-        return listDrinks;
     }
 
 
