@@ -12,10 +12,15 @@ public class Controller {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
         Command command = new Command(input);
-
         VendingMachine vendingMachine = null;
         String path = "C:\\Users\\Taron\\Desktop\\Aca_Bootcamp_Task\\src\\com\\company\\VendingMachineTwo\\DB\\VMDB.txt";
         File file = new File(path);
+        vendingMachine = getVendingMachine(vendingMachine, file);
+        vendingMachine.giveProduct(command);
+        serializer(vendingMachine, file);
+    }
+
+    private static VendingMachine getVendingMachine(VendingMachine vendingMachine, File file) {
         if (!file.exists() || file.length() == 0) {
             try {
                 file.createNewFile();
@@ -24,21 +29,15 @@ public class Controller {
                 e.printStackTrace();
             }
         } else {
-            vendingMachine = deSerializer(vendingMachine, file);
+            vendingMachine = deserialize(vendingMachine, file);
         }
-
-       vendingMachine.giveProduct(command);
-        serializer(vendingMachine, file);
+        return vendingMachine;
     }
 
-    private static VendingMachine deSerializer(VendingMachine vendingMachine, File file) {
+    private static VendingMachine deserialize(VendingMachine vendingMachine, File file) {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
                 vendingMachine = (VendingMachine) objectInputStream.readObject();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return vendingMachine;

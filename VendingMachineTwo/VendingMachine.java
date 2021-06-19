@@ -21,11 +21,11 @@ import java.io.Serializable;
 import java.util.*;
 
 public  class VendingMachine implements Serializable {
-    private static final HashMap<String, List<Queue<Product>>> hashMap = new HashMap<>();
-   private static final List<Queue<Product>> listSandwich = new LinkedList<>();
-   private static final List<Queue<Product>> listChips = new LinkedList<>();
-   private static final List<Queue<Product>> listChocolate = new LinkedList<>();
-   private static final List<Queue<Product>> listDrinks = new LinkedList<>();
+    private  final HashMap<String, List<Queue<Product>>> hashMap = new HashMap<>();
+   private  final List<Queue<Product>> listSandwich = new LinkedList<>();
+   private  final List<Queue<Product>> listChips = new LinkedList<>();
+   private  final List<Queue<Product>> listChocolate = new LinkedList<>();
+   private  final List<Queue<Product>> listDrinks = new LinkedList<>();
 
     public VendingMachine() {
         setSandwichType();
