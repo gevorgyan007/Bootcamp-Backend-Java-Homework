@@ -42,9 +42,6 @@ public class SimpleList<T> {
     }
 
     public void remove(T item) {
-
-
-
         remove(indexOf(item));
     }
 

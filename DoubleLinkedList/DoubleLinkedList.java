@@ -61,7 +61,7 @@ public class DoubleLinkedList<T> implements MyList<T> {
             last.next=null;
         }
         current.next = current.next.next;
-        current.next.next.prev = current;
+        current.next.prev = current;//current.next.prev = current;true
         count--;
     }
 

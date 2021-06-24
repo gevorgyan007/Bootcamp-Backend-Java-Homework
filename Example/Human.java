@@ -11,6 +11,10 @@ public class Human implements Serializable {
         this.name = name;
     }
 
+    public Human() {
+
+    }
+
     public int getAge() {
         return age;
     }
